@@ -1,12 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import FinishedMatch from "../FinishedMatch";
-
-const ListMatchBox = {
-  display: "flex",
-  flexDirection: "column",
-  flexWrap: "wrap",
-};
+import { ListMatchBox, TitleStyle } from "./style";
 
 // TODO - sort finished matches by score and last added
 
@@ -27,8 +22,14 @@ const ListFinishedMatch = ({ finishedMatches }) => {
 
   return (
     <Box sx={ListMatchBox}>
-      <Typography variant="h4">Score Board:</Typography>
-      {sortedFinishedMatches.length === 0 && <Typography variant="h6">No matches played</Typography>}
+      <Typography sx={TitleStyle} variant="h4">
+        Score Board:
+      </Typography>
+      {sortedFinishedMatches.length === 0 && (
+        <Typography sx={TitleStyle} variant="h6">
+          No matches played
+        </Typography>
+      )}
       {sortedFinishedMatches &&
         sortedFinishedMatches.map((finishedMatch) => {
           return <FinishedMatch key={finishedMatch.id} finishedMatch={finishedMatch} />;

@@ -1,24 +1,19 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
+import { MatchBox, MatchCard, MatchScore } from "./style";
 
-const MatchBox = {
-  width: "300px",
-  margin: "1rem 1rem",
-};
-
-const MatchCard = {
-  minWidth: "275px",
-  padding: "1rem 1rem",
-};
-
-const MatchScore = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+const getWinner = (homeTeamScore, awayTeamScore) => {
+  if (homeTeamScore > awayTeamScore) {
+    return "homeTeam";
+  } else if (homeTeamScore < awayTeamScore) {
+    return "awayTeam";
+  }
 };
 
 const FinishedMatch = ({ finishedMatch }) => {
+  const winner = getWinner(finishedMatch.homeTeamScore, finishedMatch.awayTeamScore);
+
   return (
     <Box sx={MatchBox}>
       <Card sx={MatchCard}>
@@ -27,8 +22,12 @@ const FinishedMatch = ({ finishedMatch }) => {
           <Typography variant="h5">{finishedMatch.awayTeam}</Typography>
         </Box>
         <Box sx={MatchScore}>
-          <Typography variant="h5">{finishedMatch.homeTeamScore}</Typography>
-          <Typography variant="h5">{finishedMatch.awayTeamScore}</Typography>
+          <Typography variant="h5" color={winner === "homeTeam" ? "green" : "black"}>
+            {finishedMatch.homeTeamScore}
+          </Typography>
+          <Typography variant="h5" color={winner === "awayTeam" ? "green" : "black"}>
+            {finishedMatch.awayTeamScore}
+          </Typography>
         </Box>
       </Card>
     </Box>

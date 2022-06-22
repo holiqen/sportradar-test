@@ -6,43 +6,26 @@ import IconButton from "@mui/material/IconButton";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import UpdateIcon from "@mui/icons-material/Update";
 import AlarmOnIcon from "@mui/icons-material/AlarmOn";
-
-const MatchBox = {
-  width: "300px",
-  margin: "1rem 1rem",
-};
-
-const MatchCard = {
-  minWidth: "275px",
-  padding: "1rem 1rem",
-};
-
-const MatchScore = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-};
-
-const HiddenMatchScore = {
-  display: "flex",
-  visibility: "hidden",
-};
-
-const ButtonsBox = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  marginTop: "1rem",
-};
+import { ButtonsBox, HiddenMatchScore, MatchBox, MatchCard, MatchScore } from "./style";
 
 const getRandomScore = () => {
   return Math.floor(Math.random() * 11);
+};
+
+const getWinner = (homeTeamScore, awayTeamScore) => {
+  if (homeTeamScore > awayTeamScore) {
+    return "homeTeam";
+  } else if (homeTeamScore < awayTeamScore) {
+    return "awayTeam";
+  }
 };
 
 const Match = ({ match, setFinishedMatches, setMatches }) => {
   const [isGameStart, setIsGameStart] = useState(false);
   const [isGameUpdate, setIsGameUpdate] = useState(false);
   const [updateMatch, setUpdateMatch] = useState(match);
+
+  const winner = getWinner(updateMatch.homeTeamScore, updateMatch.awayTeamScore);
 
   const handleStartGame = () => {
     setIsGameStart(true);
@@ -69,8 +52,12 @@ const Match = ({ match, setFinishedMatches, setMatches }) => {
           <Typography variant="h5">{updateMatch.awayTeam}</Typography>
         </Box>
         <Box sx={isGameStart ? MatchScore : HiddenMatchScore}>
-          <Typography variant="h5">{updateMatch.homeTeamScore}</Typography>
-          <Typography variant="h5">{updateMatch.awayTeamScore}</Typography>
+          <Typography variant="h5" color={winner === "homeTeam" ? "green" : "black"}>
+            {updateMatch.homeTeamScore}
+          </Typography>
+          <Typography variant="h5" color={winner === "awayTeam" ? "green" : "black"}>
+            {updateMatch.awayTeamScore}
+          </Typography>
         </Box>
         <Divider />
         <Box sx={ButtonsBox}>
