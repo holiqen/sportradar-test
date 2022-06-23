@@ -7,18 +7,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import UpdateIcon from "@mui/icons-material/Update";
 import AlarmOnIcon from "@mui/icons-material/AlarmOn";
 import { ButtonsBox, HiddenMatchScore, MatchBox, MatchCard, MatchScore } from "./style";
-
-const getRandomScore = () => {
-  return Math.floor(Math.random() * 11);
-};
-
-const getWinner = (homeTeamScore, awayTeamScore) => {
-  if (homeTeamScore > awayTeamScore) {
-    return "homeTeam";
-  } else if (homeTeamScore < awayTeamScore) {
-    return "awayTeam";
-  }
-};
+import { getRandomScore, getWinner } from "./Match";
 
 const Match = ({ match, setFinishedMatches, setMatches }) => {
   const [isGameStart, setIsGameStart] = useState(false);

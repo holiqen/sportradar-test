@@ -2,20 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import FinishedMatch from "../FinishedMatch";
 import { ListMatchBox, TitleStyle } from "./style";
-
-// TODO - sort finished matches by score and last added
-
-const getSortedFinishedMatches = (finishedMatches) => {
-  return finishedMatches.sort((a, b) => {
-    if (a.homeTeamScore + a.awayTeamScore > b.homeTeamScore + b.awayTeamScore) {
-      return -1;
-    }
-    if (a.homeTeamScore + a.awayTeamScore < b.homeTeamScore + b.awayTeamScore) {
-      return 1;
-    }
-    return -1;
-  });
-};
+import { getSortedFinishedMatches } from "./ListFinishedMatch";
 
 const ListFinishedMatch = ({ finishedMatches }) => {
   const sortedFinishedMatches = getSortedFinishedMatches(finishedMatches);

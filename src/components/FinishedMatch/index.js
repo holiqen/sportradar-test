@@ -2,14 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import { MatchBox, MatchCard, MatchScore } from "./style";
-
-const getWinner = (homeTeamScore, awayTeamScore) => {
-  if (homeTeamScore > awayTeamScore) {
-    return "homeTeam";
-  } else if (homeTeamScore < awayTeamScore) {
-    return "awayTeam";
-  }
-};
+import { getWinner } from "../Match/Match";
 
 const FinishedMatch = ({ finishedMatch }) => {
   const winner = getWinner(finishedMatch.homeTeamScore, finishedMatch.awayTeamScore);

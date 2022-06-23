@@ -1,17 +1,9 @@
 import ListMatch from "./components/ListMatch";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import ListFinishedMatch from "./components/ListFinishedMatch";
 import { Box, Divider, Typography, useMediaQuery } from "@mui/material";
 import { AppBox, DividerStyle, ScoreBoardBox, TitleStyle } from "./style";
-
-const mockMatches = [
-  { homeTeam: "Mexico", awayTeam: "Canada", homeTeamScore: 0, awayTeamScore: 0, id: uuidv4() },
-  { homeTeam: "Spain", awayTeam: "Brazil", homeTeamScore: 0, awayTeamScore: 0, id: uuidv4() },
-  { homeTeam: "Germany", awayTeam: "France", homeTeamScore: 0, awayTeamScore: 0, id: uuidv4() },
-  { homeTeam: "Uruguay", awayTeam: "Italy", homeTeamScore: 0, awayTeamScore: 0, id: uuidv4() },
-  { homeTeam: "Argentina", awayTeam: "Australia", homeTeamScore: 0, awayTeamScore: 0, id: uuidv4() },
-];
+import { mockMatches } from "./utils";
 
 const App = () => {
   const [finishedMatches, setFinishedMatches] = useState([]);
