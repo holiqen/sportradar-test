@@ -32,7 +32,7 @@ describe("ListFinishedMatch Test", () => {
 
   it("Get Sorted Finished Matches with null", () => {
     const mockMatches = null;
-    const mockResultSortedMatches = null;
+    const mockResultSortedMatches = [];
     const mockSortedMatches = getSortedFinishedMatches(mockMatches);
 
     expect(mockSortedMatches).toStrictEqual(mockResultSortedMatches);
@@ -40,7 +40,7 @@ describe("ListFinishedMatch Test", () => {
 
   it("Get Sorted Finished Matches with undefined", () => {
     const mockMatches = undefined;
-    const mockResultSortedMatches = undefined;
+    const mockResultSortedMatches = [];
     const mockSortedMatches = getSortedFinishedMatches(mockMatches);
 
     expect(mockSortedMatches).toStrictEqual(mockResultSortedMatches);

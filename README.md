@@ -1,8 +1,25 @@
-# Sportradar Test App
+# Sportradat Test App
 
-### TODO:
+It's a Live Football World Cup Score Board that shows matches and scores.
 
+## Run Locally
+
+Install dependencies
+
+```bash
+  make install
 ```
-- refine sorting
-- add a description for the app
+
+Start the server
+
+```bash
+  make start
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  make jest
 ```

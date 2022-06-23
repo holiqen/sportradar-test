@@ -1,16 +1,20 @@
-// TODO - sort finished matches by score and last added
-
 export const getSortedFinishedMatches = (finishedMatches) => {
-  return (
-    finishedMatches &&
-    finishedMatches.sort((a, b) => {
-      if (a.homeTeamScore + a.awayTeamScore > b.homeTeamScore + b.awayTeamScore) {
-        return -1;
-      }
-      if (a.homeTeamScore + a.awayTeamScore < b.homeTeamScore + b.awayTeamScore) {
-        return 1;
-      }
+  if (!finishedMatches) {
+    return [];
+  }
+
+  const newFinishedMatches = [...finishedMatches];
+
+  return newFinishedMatches.sort((a, b) => {
+    const aScore = a.homeTeamScore + a.awayTeamScore;
+    const bScore = b.homeTeamScore + b.awayTeamScore;
+
+    if (aScore > bScore) {
       return -1;
-    })
-  );
+    }
+    if (aScore < bScore) {
+      return 1;
+    }
+    return -1;
+  });
 };
